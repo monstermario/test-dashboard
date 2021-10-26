@@ -35,8 +35,23 @@ const expiryDates: string[] = [
   'Nov 26th, 2021, 10:00 AM',
 ];
 
-export const Filters: React.FC = () => {
+declare type PageProps = {
+  filterList: string[];
+  handleFilter: (newFilterList: string[]) => void;
+};
+
+export const Filters = ({ filterList, handleFilter }: PageProps) => {
   const [searchText, setSearchText] = useState<string>('');
+
+  const updateFilter = (e: string) => {
+    const index = filterList.indexOf(e);
+    const newFilterList =
+      index > -1
+        ? filterList.filter((x: string) => x !== e)
+        : filterList.concat([e]);
+    handleFilter(newFilterList);
+  };
+
   return (
     <Filter>
       <FilterTitle>Filter positions</FilterTitle>
@@ -70,7 +85,14 @@ export const Filters: React.FC = () => {
         <StyledUl>
           {expiryDates.map((item: string, index: number) => (
             <StyledLi key={`filter-date-${index}`}>
-              <input type="checkbox" name="expiryDate" id={`date-${index}`} />
+              <input
+                type="checkbox"
+                name="expiryDate"
+                id={`date-${index}`}
+                onChange={(e) => {
+                  updateFilter(item);
+                }}
+              />
               {item}
             </StyledLi>
           ))}

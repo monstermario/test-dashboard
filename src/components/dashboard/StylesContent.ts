@@ -26,7 +26,7 @@ export const TabGroup = styled.div<{background: string}>`
 `;
 
 export const TabOpen = styled.p<{ active: boolean }>`
-  width: 150px;
+  width: 160px;
   padding: 20px 0 16px;
   text-align: center;
   cursor: pointer;
@@ -41,7 +41,7 @@ export const TabStyle = styled.p<{ active: boolean }>`
   cursor: pointer;
   border-radius: ${borderRadius};
   ${(props) => props.active ? `
-    line-height: 39px;
+    line-height: 38px;
     box-shadow: 0px 2px 4px rgba(60, 70, 73, 0.08), 0px 0px 1px rgba(60, 70, 73, 0.16), 0px 4px 6px rgba(60, 70, 73, 0.08);
     backdrop-filter: blur(64px);
     color: black;

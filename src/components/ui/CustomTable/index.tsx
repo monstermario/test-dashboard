@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { PositionData } from '../../../pages/dashboard';
 import { success, warn } from '../../../styles/Colors';
-import { PositionData } from '../../dashboard/ContentDashboard';
-import { IconDown } from '../Icon';
 import { Button, ColoredText, Table, Td, Th } from './StylesTable';
-interface DropMenuProps {
-  isVisible: boolean;
-}
 
 declare type PageProps = {
   lists: PositionData[];
@@ -17,13 +11,15 @@ export const CustomTable = ({ lists }: PageProps) => {
     <Table>
       <table>
         <thead>
-          <Th>CURRENCY</Th>
-          <Th>POSITION</Th>
-          <Th>EXPIRY</Th>
-          <Th>SIZE</Th>
-          <Th>COST</Th>
-          <Th>P&L</Th>
-          <Th></Th>
+          <tr>
+            <Th>CURRENCY</Th>
+            <Th>POSITION</Th>
+            <Th>EXPIRY</Th>
+            <Th>SIZE</Th>
+            <Th>COST</Th>
+            <Th>P&L</Th>
+            <Th></Th>
+          </tr>
         </thead>
         <tbody>
           {lists &&
@@ -42,7 +38,7 @@ export const CustomTable = ({ lists }: PageProps) => {
                   />
                   <b>{`$${item.amount} ${item.position}`}</b>
                 </Td>
-                <Td>{item.expiry}</Td>
+                <Td>{item.expiry.split(', ')[0]}</Td>
                 <Td>{`${item.size.toFixed(4)} ${item.currency}`}</Td>
                 <Td>${item.cost}</Td>
                 <Td>

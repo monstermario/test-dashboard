@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PositionData } from '../../pages/dashboard';
 import { CustomTable } from '../ui/CustomTable';
 import {
   Content,
@@ -9,60 +10,10 @@ import {
   TabStyle,
 } from './StylesContent';
 
-export type PositionData = {
-  currency: string;
-  icon: string;
-  position: string;
-  amount: number;
-  expiry: string;
-  size: number;
-  cost: number;
-  pl: number;
+declare type PageProps = {
+  positions: PositionData[];
 };
-
-export const ContentDashboard: React.FC = () => {
-  const positions: PositionData[] = [
-    {
-      currency: 'ETH',
-      icon: '/assets/img/ethereum.png',
-      position: 'Call',
-      amount: 3679.74,
-      expiry: 'Oct 18th',
-      size: 1,
-      cost: 512.36,
-      pl: 1.12,
-    },
-    {
-      currency: 'ETH',
-      icon: '/assets/img/ethereum.png',
-      position: 'Put',
-      amount: 4215.12,
-      expiry: 'Oct 18th',
-      size: 1,
-      cost: 512.36,
-      pl: 4.15,
-    },
-    {
-      currency: 'ETH',
-      icon: '/assets/img/ethereum.png',
-      position: 'Call',
-      amount: 3679.74,
-      expiry: 'Oct 18th',
-      size: 1,
-      cost: 512.36,
-      pl: 1.12,
-    },
-    {
-      currency: 'ETH',
-      icon: '/assets/img/ethereum.png',
-      position: 'Put',
-      amount: 4215.12,
-      expiry: 'Oct 18th',
-      size: 1,
-      cost: 512.36,
-      pl: 4.15,
-    },
-  ];
+export const ContentDashboard = ({ positions }: PageProps) => {
   const [isOpenTab, setIsOpenTab] = useState<boolean>(true);
   const [isAmericanStyle, setIsAmericanStyle] = useState<boolean>(false);
 
